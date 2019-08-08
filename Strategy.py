@@ -1,3 +1,4 @@
+import curses, time
 
 class UpLeftStrategy():
   def __init__( self ):
@@ -13,5 +14,4 @@ class UpLeftStrategy():
 class HumanStrategy():
     def move( self, board ):
        board.print_game()
-       mv = input("Move: ")
-       return mv
+       return input( "Move (u/d/l/r): " )
