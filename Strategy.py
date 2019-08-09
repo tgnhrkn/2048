@@ -31,4 +31,6 @@ class HumanStrategy():
             c = self.win.getch()
             if c == -1:
                 continue
-            return self.input_map[chr(c)]
+
+            if chr(c) in self.input_map :
+                return self.input_map[chr(c)]
