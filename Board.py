@@ -9,16 +9,15 @@ class Board_2048:
         
     def print( self ):
         print( self.board )
-
-    def print_game( self ):
-        
+    
+    def board_str( self ):
         def get_lines():
             cap_str = "+"
             fill_str = "|"
             for i in range(self.width):
                 cap_str = cap_str + "-----+"
                 fill_str = fill_str + "     |"
-            return (cap_str, fill_str)
+            return (cap_str + "\n", fill_str + "\n")
 
         (cap_line, fill_line) = get_lines()
 
@@ -29,14 +28,16 @@ class Board_2048:
             ret = "|"
             for e in row:
                 ret = ret + e_str(e).center( 5, ' ' ) + "|"
-            return ret
-        
-        print( cap_line )
+            return ret + "\n"
+
+        brd = cap_line
         for row in self.board:
-            print( fill_line )
-            print( row_str( row ) )
-            print( fill_line )
-            print( cap_line )
+            brd = brd + fill_line + row_str( row ) + fill_line + cap_line
+        return brd
+        
+
+    def print_game( self ):
+        print( self.board_str() )
 
     def get_init_board( self ):
       arr = []

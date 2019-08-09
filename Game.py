@@ -2,7 +2,7 @@ from Board import Board_2048
 
 class Standard2048Game:
 
-    def __init__( self, strategy ):
+    def __init__( self, strategy,  ):
         self.strategy = strategy
         self.board = None
         self.points = None
@@ -15,8 +15,7 @@ class Standard2048Game:
 
     def finish( self ):
         if not self.board:
-            print( "Game not started" )
-            return
+            return "Game not started"
 
         stuck_moves = 0
         while( not self.board.stuck() and not stuck_moves > 3):
@@ -26,16 +25,16 @@ class Standard2048Game:
                 self.board.place_random_tile()
             else:
                 stuck_moves = stuck_moves + 1
-
+        
+        finstr = ""
         if ( stuck_moves > 3 ):
-            print( "Strategy got stuck" )
+            finstr = "Strategy got stuck\n"
         else:
-            print( "Stuck board" )
+            finstr = "Stuck board\n"
 
-        print( "Final Board: (%d points)" % self.points )
-        self.board.print_game()
+        return finstr + "Final Board: (%d points)\n" % self.points + self.board.board_str()
 
     def play( self ):
         self.start()
-        self.finish()
+        return self.finish()
         
