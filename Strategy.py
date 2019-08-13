@@ -1,3 +1,4 @@
+
 class AllFourStrategy():
     
     moves = ['u', 'r', 'l', 'd']
