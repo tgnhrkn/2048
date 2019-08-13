@@ -2,13 +2,15 @@ from Board import Board_2048
 
 class Standard2048Game:
 
-    def __init__( self, strategy,  ):
+    def __init__( self, strategy, width=4, height=4 ):
         self.strategy = strategy
+        self.width = width
+        self.height = height
         self.board = None
         self.points = None
     
     def start( self ):
-        self.board = Board_2048( 4 )
+        self.board = Board_2048( width=self.width, height=self.height )
         self.board.place_random_tile()
         self.board.place_random_tile()
         self.points = 0

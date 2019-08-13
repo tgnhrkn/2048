@@ -3,18 +3,16 @@ import random
 
 class Board_2048:
     
-    def __init__( self, width ):
+    def __init__( self, width=4, height=4 ):
         self.width = width
+        self.height = height
         self.board = self.get_init_board()
         
-    def print( self ):
-        print( self.board )
-    
     def board_str( self ):
         def get_lines():
             cap_str = "+"
             fill_str = "|"
-            for i in range(self.width):
+            for _ in range(self.width):
                 cap_str = cap_str + "-----+"
                 fill_str = fill_str + "     |"
             return (cap_str + "\n", fill_str + "\n")
@@ -40,12 +38,7 @@ class Board_2048:
         print( self.board_str() )
 
     def get_init_board( self ):
-      arr = []
-      for w in range( self.width ):
-          arr.append( [] )
-      for r in arr:
-        for i in range(self.width):
-          r.append(None)
+      arr = [[None for _ in range( self.width ) ] for _ in range( self.height ) ]
       return np.array(arr)
 
     def place_random_tile( self, val=2 ):
@@ -117,7 +110,7 @@ class Board_2048:
         
         points = 0
         moved = False
-        for i in range( self.width ):
+        for i in range( self.height if direction in [ 'l', 'r' ] else self.width ):
             ( p, m ) = in_place_compress_left( rc_get( i, direction ) )
             points = points + p
             moved = moved or m
