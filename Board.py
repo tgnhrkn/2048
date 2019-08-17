@@ -7,6 +7,26 @@ class Board_2048:
         self.width = width
         self.height = height
         self.board = self.get_init_board()
+
+    def get_copy( self ):
+        copy = Board_2048( width=self.width, height=self.height )
+        copy.set_board( self.board )
+        return copy
+
+    def set_board( self, new_board ):
+        if new_board.shape == self.board.shape:
+            self.board = np.copy( new_board )
+        else:
+            raise Exception( "cannot set_board with different shape" )
+
+    def total( self ):
+        return sum( filter( None, self.board.flatten() ) )
+
+    def max( self ):
+        return max( filter( None, self.board.flatten() ) )
+
+    def shape( self ): 
+        return ( self.height, self.width )
         
     def board_str( self ):
         def get_lines():

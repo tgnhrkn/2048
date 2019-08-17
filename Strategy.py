@@ -1,3 +1,11 @@
+import random
+
+class RandomStrategy():
+    moves = [ 'u', 'r', 'l', 'd' ]
+
+    def move( self, board ):
+        return random.sample(self.moves, 1)[0]
+
 
 class AllFourStrategy():
     
