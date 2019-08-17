@@ -63,7 +63,3 @@ if toggle_dict[ 'averages' ]:
         print( "Average TPG: %d turns" % avgs['turns_avg'] )
 
 print( "Done" )
-
-
-
-    

@@ -11,7 +11,17 @@ class MonteCarloStrategy:
 
     def move( self, board ):
         return SerialMCRunner().run( runs=self.background_runs, board=board )[1]        
-        
+
+class MonteCarloVizStrategy( MonteCarloStrategy ):
+    
+    def __init__( self, win, background_runs=1 ):
+        super().__init__( background_runs )
+        self.win = win
+
+    def move( self, board ): 
+        self.win.addstr( 0, 0, board.board_str() )
+        self.win.refresh()
+        return super().move( board )
 
 class SerialMCRunner():
 

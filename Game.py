@@ -73,8 +73,8 @@ class GameTracker:
     def run( self ):
         
         for _ in range( self.rounds ):
-            points, turns, _ = self.game.play()
-            self.gameinfo = np.append( self.gameinfo, [[points, turns]], axis=0 )
+            results = self.game.setup_and_play()
+            self.gameinfo = np.append( self.gameinfo, [[results['points'], results['turns']]], axis=0 )
 
     def averages( self ):
         sums = np.sum(self.gameinfo, axis=0)
