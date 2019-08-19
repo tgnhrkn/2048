@@ -40,6 +40,7 @@ class Standard2048Game:
                 self.turns = self.turns + 1
                 self.movelist.append( move )
             elif self.max_stuck > 0:
+                print( "incr" )
                 stuck_moves = stuck_moves + 1
         
         finstr = ""

@@ -6,7 +6,7 @@ from MonteCarlo import MonteCarloVizStrategy
 
 
 def main( win ):
-    result = Standard2048Game( MonteCarloVizStrategy(win, 10 ) ).setup_and_play()
+    result = Standard2048Game( MonteCarloVizStrategy(win, 300, parallel=True, n_proc=10 ) ).setup_and_play()
     win.clear()
     win.refresh()
     curses.setsyx(0,0)

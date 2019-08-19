@@ -12,7 +12,7 @@ br = 1
 if len( sys.argv ) == 2:
     br = int( sys.argv[1] )
 
-result = Standard2048Game( MonteCarloStrategy( br ) ).setup_and_play()
+result = Standard2048Game( MonteCarloStrategy( br, parallel=True, n_proc=10 ) ).setup_and_play()
 
 ttime = time.time() - stime
 
